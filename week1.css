@@ -1,0 +1,27 @@
+a:hover {
+    color: orange;
+}
+
+.erilainen {
+    background-color: orange;
+    font-size: 30px;
+}
+
+.samanlainen {
+    
+    background-color: lightblue; 
+    width: 200px;
+}
+
+.table{
+    background-color: lightblue;
+    width: 200px;
+}
+
+#test {
+    border: red 2px solid;
+}
+#inner {
+    width: 50%;
+    margin: 0 auto;
+}
