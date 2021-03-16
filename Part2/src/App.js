@@ -17,7 +17,7 @@ class App extends React.Component {
   componentDidMount() {
     console.log('did mount')
     axios
-      .get('http://localhost:3001/api/reminders/')
+      .get('https://stormy-shore-37347.herokuapp.com/api/reminders/')
       .then(response => {
         console.log('promise fulfilled')
         this.setState({ notes: response.data })
@@ -69,15 +69,16 @@ class App extends React.Component {
       newTime: ''
     })
 
-    axios.post('http://localhost:3001/api/reminders/', noteObject)
-      .then(response => {
-        console.log(response)
-      })
-  }
+    axios.post('https://stormy-shore-37347.herokuapp.com/api/reminders', noteObject)
+    .then(response => {
+      console.log(response)
+    })
+}
 
-  deleteNote = (props) => {
-    if (window.confirm("Do you really want to remove reminder?")) {
-      let url = 'http://localhost:3001/api/reminders/' + props
+deleteNote = (props) => {
+  console.log(props)
+  if (window.confirm("Do you really want to remove reminder?")) {
+      let url = 'https://stormy-shore-37347.herokuapp.com/api/reminders/' + props
       axios.delete(url, {
       });
       window.location.reload(true);
@@ -110,8 +111,8 @@ class App extends React.Component {
         </form>
         <h2>Reminders:</h2>
         {this.state.notes.map(item => (
-          <li key={item.id}> {item.content} {item.Time}
-            <button type="Delete" onClick={() => this.deleteNote(item.id)}>Delete</button>
+          <li key={item._id}> {item.content} {item.Time}
+            <button type="Delete" onClick={() => this.deleteNote(item._id)}>Delete</button>
           </li>
         ))
         }
